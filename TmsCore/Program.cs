@@ -20,14 +20,34 @@
 
 
 
-System.Console.WriteLine("//////////// double stores values in binary approximation. ////////////");
-double grant = 1999.99;
-double total = grant * 100000;
+// System.Console.WriteLine("//////////// double stores values in binary approximation. ////////////");
+// double grant = 1999.99;
+// double total = grant * 100000;
 
-Console.WriteLine(total);
+// Console.WriteLine(total);
 
-System.Console.WriteLine("//////////// Correct: Use decimal ////////////");
-decimal money = 1999.99m;
-decimal final = money * 100000m;
+// System.Console.WriteLine("//////////// Correct: Use decimal ////////////");
+// decimal money = 1999.99m;
+// decimal final = money * 100000m;
 
-Console.WriteLine(final);
+// Console.WriteLine(final);
+
+
+
+System.Console.WriteLine("//////////// Create Models(provide Immutable behavior also prevent database corruption) ////////////");
+var enrollment1 =
+    new EnrollmentRecord(
+        "STU-001",
+        "CS-401",
+        DateTime.UtcNow
+    );
+
+var enrollment2 =
+    new EnrollmentRecord(
+        "STU-101",
+        "CS-502",
+        DateTime.UtcNow
+    );
+
+Console.WriteLine(enrollment1);
+Console.WriteLine(enrollment2);
