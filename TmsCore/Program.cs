@@ -34,20 +34,66 @@
 
 
 
-System.Console.WriteLine("//////////// Create Models(provide Immutable behavior also prevent database corruption) ////////////");
-var enrollment1 =
-    new EnrollmentRecord(
-        "STU-001",
-        "CS-401",
-        DateTime.UtcNow
-    );
+// System.Console.WriteLine("//////////// Create Models(provide Immutable behavior also prevent database corruption) ////////////");
+// var enrollment1 =
+//     new EnrollmentRecord(
+//         "STU-001",
+//         "CS-401",
+//         DateTime.UtcNow
+//     );
 
-var enrollment2 =
-    new EnrollmentRecord(
-        "STU-101",
-        "CS-502",
-        DateTime.UtcNow
-    );
+// var enrollment2 =
+//     new EnrollmentRecord(
+//         "STU-101",
+//         "CS-502",
+//         DateTime.UtcNow
+//     );
 
-Console.WriteLine(enrollment1);
-Console.WriteLine(enrollment2);
+// Console.WriteLine(enrollment1);
+// Console.WriteLine(enrollment2);
+
+
+
+
+Console.WriteLine("=== COURSE VALIDATION ===");
+
+var course = new Course
+{
+    Code = "CS-401",
+    Title = "Advanced C#",
+    Capacity = 30
+};
+
+Console.WriteLine($"Course: {course.Title}");
+
+Console.WriteLine($"Capacity: {course.Capacity}");
+
+Console.WriteLine();
+
+Console.WriteLine("=== INVALID CAPACITY ===");
+
+try
+{
+    course.Capacity = -5;
+}
+catch (ArgumentOutOfRangeException ex)
+{
+    Console.WriteLine(
+        $"Caught Error: {ex.Message}"
+    );
+}
+
+Console.WriteLine();
+
+Console.WriteLine("=== INVALID TITLE ===");
+
+try
+{
+    course.Title = "";
+}
+catch (ArgumentException ex)
+{
+    Console.WriteLine(
+        $"Caught Error: {ex.Message}"
+    );
+}
