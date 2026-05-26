@@ -260,12 +260,49 @@
 
 // Spread Operator(merge collections) //
 
-string[] backendCourses = ["C#", "Data Structures", "Algorithms"];
-string[] frontendCourses = ["HTML & CSS", "JavaScript", "React"];
+// string[] backendCourses = ["C#", "Data Structures", "Algorithms"];
+// string[] frontendCourses = ["HTML & CSS", "JavaScript", "React"];
 
-string[] allCourses = [..backendCourses, ..frontendCourses];
+// string[] allCourses = [..backendCourses, ..frontendCourses];
 
-foreach (var course in allCourses)
+// foreach (var course in allCourses)
+// {
+//     Console.WriteLine(course);
+// }
+
+
+
+// LINQ(Lists, Arrays, Databases, XML, APIs, Entity Framework Core) //
+List<Student> students = [
+    new ()
+    {
+        Id = "STU-001",
+        Name = "Abeba",
+        Age = 20,
+        GPA = 3.8m,
+        Email = "abeba@example.com"
+    },
+    new ()
+    {
+        Id = "STU-002",
+        Name = "John",
+        Age = 22,
+        GPA = 3.5m,
+        Email = "john@example.com"
+    },
+    new ()
+    {
+        Id = "STU-003",
+        Name = "Helen",
+        Age = 21,
+        GPA = 4.0m,
+        Email = "helen@example.com"
+    }
+];
+
+var honors = students.Where(s => s.GPA > 3.5m);
+ 
+foreach (var student in honors)
 {
-    Console.WriteLine(course);
-}
+    Console.WriteLine($"{student.Name} - GPA: {student.GPA}");
+};
