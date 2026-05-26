@@ -228,13 +228,30 @@
 
 
 ///////////////// Session Two ////////////////////
-List<string> frontendCourses = [
-    "HTML & CSS",
-    "JavaScript",
-    "React"
-];
+/// 
+/// Collection Expressions ///
+// List<string> frontendCourses = [
+//     "HTML & CSS",
+//     "JavaScript",
+//     "React"
+// ];
 
-foreach (var course in frontendCourses)
-{
-    Console.WriteLine(course);
-}
+// foreach (var course in frontendCourses)
+// {
+//     Console.WriteLine(course);
+// }
+
+
+/// Dictionary Collections ///
+Dictionary<string, string> students = 
+    new()
+    {
+        ["STU-001"] = "Abeba",
+        ["STU-002"] = "John",
+        ["STU-003"] = "Helen"                                                                                                
+    };
+
+//Add    
+students["STU-004"] = "Dawit";    
+
+Console.WriteLine(students["STU-004"]);
