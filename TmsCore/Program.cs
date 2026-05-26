@@ -243,15 +243,29 @@
 
 
 /// Dictionary Collections ///
-Dictionary<string, string> students = 
-    new()
-    {
-        ["STU-001"] = "Abeba",
-        ["STU-002"] = "John",
-        ["STU-003"] = "Helen"                                                                                                
-    };
+// Dictionary<string, string> students = 
+//     new()
+//     {
+//         ["STU-001"] = "Abeba",
+//         ["STU-002"] = "John",
+//         ["STU-003"] = "Helen"                                                                                                
+//     };
 
-//Add    
-students["STU-004"] = "Dawit";    
+// //Add    
+// students["STU-004"] = "Dawit";    
 
-Console.WriteLine(students["STU-004"]);
+// Console.WriteLine(students["STU-004"]);
+
+
+
+// Spread Operator(merge collections) //
+
+string[] backendCourses = ["C#", "Data Structures", "Algorithms"];
+string[] frontendCourses = ["HTML & CSS", "JavaScript", "React"];
+
+string[] allCourses = [..backendCourses, ..frontendCourses];
+
+foreach (var course in allCourses)
+{
+    Console.WriteLine(course);
+}
