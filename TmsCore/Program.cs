@@ -306,3 +306,14 @@ foreach (var student in honors)
 {
     Console.WriteLine($"{student.Name} - GPA: {student.GPA}");
 };
+
+
+// sorting 
+var ranked = students.OrderByDescending(s => s.GPA);
+Console.WriteLine("/// sorting /////");
+
+foreach (var student in ranked)
+{
+    Console.WriteLine($"{student.Name} - GPA: {student.GPA}");
+};
+
