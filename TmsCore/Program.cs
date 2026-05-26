@@ -55,45 +55,133 @@
 
 
 
-Console.WriteLine("=== COURSE VALIDATION ===");
+// Console.WriteLine("=== COURSE VALIDATION ===");
 
-var course = new Course
+// var course = new Course
+// {
+//     Code = "CS-401",
+//     Title = "Advanced C#",
+//     Capacity = 30
+// };
+
+// Console.WriteLine($"Course: {course.Title}");
+
+// Console.WriteLine($"Capacity: {course.Capacity}");
+
+// Console.WriteLine();
+
+// Console.WriteLine("=== INVALID CAPACITY ===");
+
+// try
+// {
+//     course.Capacity = -5;
+// }
+// catch (ArgumentOutOfRangeException ex)
+// {
+//     Console.WriteLine(
+//         $"Caught Error: {ex.Message}"
+//     );
+// }
+
+// Console.WriteLine();
+
+// Console.WriteLine("=== INVALID TITLE ===");
+
+// try
+// {
+//     course.Title = "";
+// }
+// catch (ArgumentException ex)
+// {
+//     Console.WriteLine(
+//         $"Caught Error: {ex.Message}"
+//     );
+// }
+
+
+
+
+
+Console.WriteLine("=== STUDENT MODEL ===");
+
+var student = new Student
 {
-    Code = "CS-401",
-    Title = "Advanced C#",
-    Capacity = 30
+    Id = "STU-001",
+    Name = "Abeba",
+    Age = 20,
+    GPA = 3.8m,
+    Email = "helen@example.com"
 };
 
-Console.WriteLine($"Course: {course.Title}");
+Console.WriteLine($"ID: {student.Id}");
+Console.WriteLine($"Name: {student.Name}");
+Console.WriteLine($"Age: {student.Age}");
+Console.WriteLine($"GPA: {student.GPA}");
+Console.WriteLine($"Email: {student.Email}");
 
-Console.WriteLine($"Capacity: {course.Capacity}");
-
-Console.WriteLine();
-
-Console.WriteLine("=== INVALID CAPACITY ===");
-
+Console.WriteLine("=== Invalid Name ===");
 try
 {
-    course.Capacity = -5;
-}
-catch (ArgumentOutOfRangeException ex)
-{
-    Console.WriteLine(
-        $"Caught Error: {ex.Message}"
-    );
-}
-
-Console.WriteLine();
-
-Console.WriteLine("=== INVALID TITLE ===");
-
-try
-{
-    course.Title = "";
+    var s1 = new Student
+    {
+        Id = "S1",
+        Name = "",
+        Age = 20,
+        GPA = 3.0m,
+        Email = "s1@example.com"
+    };
 }
 catch (ArgumentException ex)
 {
-    Console.WriteLine(
-        $"Caught Error: {ex.Message}"
-    );
+    Console.WriteLine(ex.Message);
+}
+Console.WriteLine("=== Invalid Age ===");
+try
+{
+    var s2 = new Student
+    {
+        Id = "S2",
+        Name = "John",
+        Age = 10,
+        GPA = 3.0m,
+        Email = "helen@example.com"
+    };
+}
+catch (ArgumentOutOfRangeException ex)
+{
+    Console.WriteLine(ex.Message);
+}
+
+Console.WriteLine("=== Invalid GPA ===");
+
+try
+{
+    var s3 = new Student
+    {
+        Id = "S3",
+        Name = "Helen",
+        Age = 22,
+        GPA = 5.0m,
+        Email = "helen@example.com"
+    };
+}
+catch (ArgumentOutOfRangeException ex)
+{
+    Console.WriteLine(ex.Message);
+}
+
+Console.WriteLine("=== Invalid Email ===");
+try
+{
+    var s4 = new Student{
+        Id = "s4",
+        Name = "Demeke",
+        Age = 21,
+        GPA = 4.0m,
+        Email = "demeke.com" 
+    };
+}
+catch (System.ArgumentException)
+{
+    Console.WriteLine("Invalid email format.");
 }
