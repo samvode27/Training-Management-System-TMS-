@@ -189,38 +189,52 @@
 
 
 
-void PrintGradeReport(
-    IEnumerable<IGradable> assessments)
-{
-    Console.WriteLine("=== GRADE REPORT ===");
+// void PrintGradeReport(
+//     IEnumerable<IGradable> assessments)
+// {
+//     Console.WriteLine("=== GRADE REPORT ===");
 
-    foreach (var item in assessments)
-    {
-        Console.WriteLine($"{item.Title}: " + $"{item.CalculateGrade():F2}%");
-    }
-}
+//     foreach (var item in assessments)
+//     {
+//         Console.WriteLine($"{item.Title}: " + $"{item.CalculateGrade():F2}%");
+//     }
+// }
 
-IGradable[] assessments =
-[
-    new Quiz
-    {
-        Title = "C# Basics",
-        CorrectAnswers = 18,
-        TotalQuestions = 20
-    },
+// IGradable[] assessments =
+// [
+//     new Quiz
+//     {
+//         Title = "C# Basics",
+//         CorrectAnswers = 18,
+//         TotalQuestions = 20
+//     },
 
-    new LabAssignment
-    {
-        Title = "Registration API",
-        FunctionalityScore = 90m,
-        CodeQualityScore = 85m
-    },
+//     new LabAssignment
+//     {
+//         Title = "Registration API",
+//         FunctionalityScore = 90m,
+//         CodeQualityScore = 85m
+//     },
 
-    new FinalExam
-{
-    Title = "Architecture Exam",
-    Score = 92m
-}                                                                                                
+//     new FinalExam
+// {
+//     Title = "Architecture Exam",
+//     Score = 92m
+// }                                                                                                
+// ];
+
+// PrintGradeReport(assessments);
+
+
+
+///////////////// Session Two ////////////////////
+List<string> frontendCourses = [
+    "HTML & CSS",
+    "JavaScript",
+    "React"
 ];
 
-PrintGradeReport(assessments);
+foreach (var course in frontendCourses)
+{
+    Console.WriteLine(course);
+}
