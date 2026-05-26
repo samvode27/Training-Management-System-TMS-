@@ -317,3 +317,46 @@ foreach (var student in ranked)
     Console.WriteLine($"{student.Name} - GPA: {student.GPA}");
 };
 
+
+var leaderboard =
+    students.Select(s =>
+        new
+        {
+            s.Name,
+            s.GPA
+        });
+
+foreach (var entry in leaderboard)
+{
+    Console.WriteLine($"{entry.Name}: {entry.GPA}");
+}
+
+
+
+///// Projection(Transform data into another shape)(don't always need FULL object Only select needed fields.) //////
+// syntax - collection.Select(item => transformation) //
+
+System.Console.WriteLine("//////// Get only student names /////////");
+var names = students.Select(s => s.Name);
+
+foreach (var name in names)
+{
+    Console.WriteLine(name);
+}
+
+System.Console.WriteLine("//////// Projection into Anonymous Object /////////");
+var leaderboard2 =
+   students.Select(s => 
+      new
+      {
+          s.Name,
+          s.GPA                                                                                                
+      });
+      
+foreach (var entry in leaderboard2)
+{
+   Console.WriteLine($"{entry.Name}: {entry.GPA}");
+};
+
+
+      
