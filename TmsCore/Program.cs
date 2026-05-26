@@ -102,86 +102,125 @@
 
 
 
-Console.WriteLine("=== STUDENT MODEL ===");
+// Console.WriteLine("=== STUDENT MODEL ===");
 
-var student = new Student
+// var student = new Student
+// {
+//     Id = "STU-001",
+//     Name = "Abeba",
+//     Age = 20,
+//     GPA = 3.8m,
+//     Email = "helen@example.com"
+// };
+
+// Console.WriteLine($"ID: {student.Id}");
+// Console.WriteLine($"Name: {student.Name}");
+// Console.WriteLine($"Age: {student.Age}");
+// Console.WriteLine($"GPA: {student.GPA}");
+// Console.WriteLine($"Email: {student.Email}");
+
+// Console.WriteLine("=== Invalid Name ===");
+// try
+// {
+//     var s1 = new Student
+//     {
+//         Id = "S1",
+//         Name = "",
+//         Age = 20,
+//         GPA = 3.0m,
+//         Email = "s1@example.com"
+//     };
+// }
+// catch (ArgumentException ex)
+// {
+//     Console.WriteLine(ex.Message);
+// }
+// Console.WriteLine("=== Invalid Age ===");
+// try
+// {
+//     var s2 = new Student
+//     {
+//         Id = "S2",
+//         Name = "John",
+//         Age = 10,
+//         GPA = 3.0m,
+//         Email = "helen@example.com"
+//     };
+// }
+// catch (ArgumentOutOfRangeException ex)
+// {
+//     Console.WriteLine(ex.Message);
+// }
+
+// Console.WriteLine("=== Invalid GPA ===");
+
+// try
+// {
+//     var s3 = new Student
+//     {
+//         Id = "S3",
+//         Name = "Helen",
+//         Age = 22,
+//         GPA = 5.0m,
+//         Email = "helen@example.com"
+//     };
+// }
+// catch (ArgumentOutOfRangeException ex)
+// {
+//     Console.WriteLine(ex.Message);
+// }
+
+// Console.WriteLine("=== Invalid Email ===");
+// try
+// {
+//     var s4 = new Student{
+//         Id = "s4",
+//         Name = "Demeke",
+//         Age = 21,
+//         GPA = 4.0m,
+//         Email = "demeke.com" 
+//     };
+// }
+// catch (System.ArgumentException)
+// {
+//     Console.WriteLine("Invalid email format.");
+// }
+
+
+
+
+void PrintGradeReport(
+    IEnumerable<IGradable> assessments)
 {
-    Id = "STU-001",
-    Name = "Abeba",
-    Age = 20,
-    GPA = 3.8m,
-    Email = "helen@example.com"
-};
+    Console.WriteLine("=== GRADE REPORT ===");
 
-Console.WriteLine($"ID: {student.Id}");
-Console.WriteLine($"Name: {student.Name}");
-Console.WriteLine($"Age: {student.Age}");
-Console.WriteLine($"GPA: {student.GPA}");
-Console.WriteLine($"Email: {student.Email}");
-
-Console.WriteLine("=== Invalid Name ===");
-try
-{
-    var s1 = new Student
+    foreach (var item in assessments)
     {
-        Id = "S1",
-        Name = "",
-        Age = 20,
-        GPA = 3.0m,
-        Email = "s1@example.com"
-    };
+        Console.WriteLine($"{item.Title}: " + $"{item.CalculateGrade():F2}%");
+    }
 }
-catch (ArgumentException ex)
-{
-    Console.WriteLine(ex.Message);
-}
-Console.WriteLine("=== Invalid Age ===");
-try
-{
-    var s2 = new Student
+
+IGradable[] assessments =
+[
+    new Quiz
     {
-        Id = "S2",
-        Name = "John",
-        Age = 10,
-        GPA = 3.0m,
-        Email = "helen@example.com"
-    };
-}
-catch (ArgumentOutOfRangeException ex)
-{
-    Console.WriteLine(ex.Message);
-}
+        Title = "C# Basics",
+        CorrectAnswers = 18,
+        TotalQuestions = 20
+    },
 
-Console.WriteLine("=== Invalid GPA ===");
-
-try
-{
-    var s3 = new Student
+    new LabAssignment
     {
-        Id = "S3",
-        Name = "Helen",
-        Age = 22,
-        GPA = 5.0m,
-        Email = "helen@example.com"
-    };
-}
-catch (ArgumentOutOfRangeException ex)
-{
-    Console.WriteLine(ex.Message);
-}
+        Title = "Registration API",
+        FunctionalityScore = 90m,
+        CodeQualityScore = 85m
+    },
 
-Console.WriteLine("=== Invalid Email ===");
-try
+    new FinalExam
 {
-    var s4 = new Student{
-        Id = "s4",
-        Name = "Demeke",
-        Age = 21,
-        GPA = 4.0m,
-        Email = "demeke.com" 
-    };
-}
-catch (System.ArgumentException)
-{
-    Console.WriteLine("Invalid email format.");
-}
+    Title = "Architecture Exam",
+    Score = 92m
+}                                                                                                
+];
+
+PrintGradeReport(assessments);
