@@ -542,3 +542,62 @@
 
 // Console.WriteLine(CheckScholarship(student));
 
+
+
+///////////////////////////// Guard Clauses("If something is invalid, STOP immediately.") /////////////////////////////
+void Enroll(Student? student, Course? course)
+{
+    if (student is null)
+    {
+        throw new ArgumentNullException(
+            nameof(student)
+        );
+    }
+
+    if (course is null)
+    {
+        throw new ArgumentNullException(
+            nameof(course)
+        );
+    }
+
+    if (course.Capacity <= 0)
+    {
+        throw new InvalidOperationException(
+            "Course is full."
+        );
+    }
+
+    Console.WriteLine(
+        "Enrollment successful"
+    );
+}
+
+
+Student student =
+    new()
+    {
+        Id = "STU-001",
+        Name = "Abeba",
+        GPA = 3.8m,
+        Age = 22,
+        Email = "abeba@example.com"
+    };
+Course course =
+    new()
+    {
+        Code = "CS-401",
+        Title = "ASP.NET Core",
+        Capacity = 2
+    };
+
+
+System.Console.WriteLine("=== Guard Clauses ===");
+try
+{
+    Enroll(student, null);
+}
+catch (ArgumentNullException ex)
+{
+    Console.WriteLine($"Error: {ex.ParamName} is required.");
+}
