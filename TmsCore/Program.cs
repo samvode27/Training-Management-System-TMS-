@@ -413,42 +413,132 @@
 
 
 ////////////////// Switch Expressions /////////////////////
-List<Student> students = [
-    new ()
-    {
-        Id = "STU-001",
-        Name = "Abeba",
-        Age = 20,
-        GPA = 3.8m,
-        Email = "abeba@example.com"
-    },
-    new ()
-    {
-        Id = "STU-002",
-        Name = "John",
-        Age = 22,
-        GPA = 3.5m,
-        Email = "john@example.com"
-    },
-    new ()
-    {
-        Id = "STU-003",
-        Name = "Helen",
-        Age = 21,
-        GPA = 4.0m,
-        Email = "helen@example.com"
-    }
-];
+// List<Student> students = [
+//     new ()
+//     {
+//         Id = "STU-001",
+//         Name = "Abeba",
+//         Age = 20,
+//         GPA = 3.8m,
+//         Email = "abeba@example.com"
+//     },
+//     new ()
+//     {
+//         Id = "STU-002",
+//         Name = "John",
+//         Age = 22,
+//         GPA = 3.5m,
+//         Email = "john@example.com"
+//     },
+//     new ()
+//     {
+//         Id = "STU-003",
+//         Name = "Helen",
+//         Age = 21,
+//         GPA = 4.0m,
+//         Email = "helen@example.com"
+//     }
+// ];
 
-string GetAcademicStanding(decimal GPA) =>
-    GPA switch
-    {
-        >= 3.8m => "Honors",
-        >= 3.5m => "Good Standing",
-        >= 2.0m => "Probation",
-        _ => "Academic Warning"
-    };
+// string GetAcademicStanding(decimal GPA) =>
+//     GPA switch
+//     {
+//         >= 3.8m => "Honors",
+//         >= 3.5m => "Good Standing",
+//         >= 2.0m => "Probation",
+//         _ => "Academic Warning"
+//     };
 
-    Console.WriteLine(GetAcademicStanding(3.9m));
-    Console.WriteLine(GetAcademicStanding(3.6m));
+//     Console.WriteLine(GetAcademicStanding(3.9m));
+//     Console.WriteLine(GetAcademicStanding(3.6m));
     
+
+
+
+////////////////// Pattern Matching9(Check if data matches a certain pattern) (type, shape, properties) /////////////////////   
+/// airport classify passenger  
+/// If age < 18 → Minor
+// If VIP card → VIP
+// If diplomat passport → Diplomat
+// Else → Regular passenger
+
+
+//System.Console.WriteLine("=== Property Pattern Matching ===");
+// string Classify(Student s) =>
+//     s switch
+//     {
+//         { GPA: >= 3.5m } => "Honors",
+
+//         { GPA: >= 2.5m } => "Good Standing",
+
+//         { GPA: >= 2.0m } => "Probation",
+
+//         _ => "Academic Warning"
+//     };
+
+// Student s1 =
+//     new()
+//     {
+//         Id = "STU-001",
+//         Name = "Abeba",
+//         GPA = 3.8m,
+//         Age = 22,
+//         Email = "abeba@example.com"
+//     };
+
+// Student s2 =
+//     new()
+//     {
+//         Id = "STU-002",
+//         Name = "Sara",
+//         GPA = 1.9m,
+//         Age = 18,
+//         Email = "sara@example.com"
+//     };   
+
+// Console.WriteLine(Classify(s1));
+// Console.WriteLine(Classify(s2));
+
+
+
+// System.Console.WriteLine("=== Relational Pattern Matching ===");
+// string GetAgeCategory(int age) =>
+//     age switch
+//     {
+//         < 13 => "Child",
+
+//         >= 13 and < 20 => "Teenager",
+
+//         >= 20 and < 60 => "Adult",
+
+//         _ => "Senior"
+//     };
+
+// Console.WriteLine(GetAgeCategory(10));
+// Console.WriteLine(GetAgeCategory(17));
+// Console.WriteLine(GetAgeCategory(35));
+// Console.WriteLine(GetAgeCategory(70));
+
+
+
+// System.Console.WriteLine("=== Logical Pattern Matching ===");
+// string CheckScholarship(Student s) =>
+//     s switch
+//     {
+//         { GPA: >= 3.7m, Age: > 25 } => "Eligible",
+
+//         _ => "Not Eligible"
+//     };
+
+// Student student =
+//     new()
+//     {
+//         Id = "STU-001",
+//         Name = "Abeba",
+//         GPA = 3.8m,
+//         Age = 22,
+//         Email = "abeba@example.com"
+//     };
+
+// Console.WriteLine(CheckScholarship(student));
+
