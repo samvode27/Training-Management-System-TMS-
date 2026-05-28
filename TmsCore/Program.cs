@@ -363,6 +363,56 @@
 
 
 ////////////// Aggregation(answers questions about data) /////////////////////
+// List<Student> students = [
+//     new ()
+//     {
+//         Id = "STU-001",
+//         Name = "Abeba",
+//         Age = 20,
+//         GPA = 3.8m,
+//         Email = "abeba@example.com"
+//     },
+//     new ()
+//     {
+//         Id = "STU-002",
+//         Name = "John",
+//         Age = 22,
+//         GPA = 3.5m,
+//         Email = "john@example.com"
+//     },
+//     new ()
+//     {
+//         Id = "STU-003",
+//         Name = "Helen",
+//         Age = 21,
+//         GPA = 4.0m,
+//         Email = "helen@example.com"
+//     }
+// ];
+
+// System.Console.WriteLine("//////// Average /////////");
+// decimal average = students.Average(s => s.GPA);
+// Console.WriteLine(average);
+
+// System.Console.WriteLine("//////// Count /////////");
+// int grate = students.Count(s => s.GPA > 3.5m);
+// Console.WriteLine(grate);
+
+// System.Console.WriteLine("//////// Any /////////");
+// bool hasProbation = students.Any(s => s.GPA < 3.8m);
+// System.Console.WriteLine(hasProbation);
+
+// System.Console.WriteLine("//////// MaxBy(Highest GPA) /////////");
+// Student? top = students.MaxBy(s => s.GPA);
+// System.Console.WriteLine($"Top Student: {top?.Name} - GPA: {top?.GPA}");
+
+// System.Console.WriteLine("//////// MinBy(Lowest GPA) /////////");
+// Student? lower = students.MinBy(s => s.GPA);
+// System.Console.WriteLine($"Lower Student: {lower?.Name} - GPA: {lower?.GPA}");
+
+
+
+////////////////// Switch Expressions /////////////////////
 List<Student> students = [
     new ()
     {
@@ -390,22 +440,15 @@ List<Student> students = [
     }
 ];
 
-System.Console.WriteLine("//////// Average /////////");
-decimal average = students.Average(s => s.GPA);
-Console.WriteLine(average);
+string GetAcademicStanding(decimal GPA) =>
+    GPA switch
+    {
+        >= 3.8m => "Honors",
+        >= 3.5m => "Good Standing",
+        >= 2.0m => "Probation",
+        _ => "Academic Warning"
+    };
 
-System.Console.WriteLine("//////// Count /////////");
-int grate = students.Count(s => s.GPA > 3.5m);
-Console.WriteLine(grate);
-
-System.Console.WriteLine("//////// Any /////////");
-bool hasProbation = students.Any(s => s.GPA < 3.8m);
-System.Console.WriteLine(hasProbation);
-
-System.Console.WriteLine("//////// MaxBy(Highest GPA) /////////");
-Student? top = students.MaxBy(s => s.GPA);
-System.Console.WriteLine($"Top Student: {top?.Name} - GPA: {top?.GPA}");
-
-System.Console.WriteLine("//////// MinBy(Lowest GPA) /////////");
-Student? lower = students.MinBy(s => s.GPA);
-System.Console.WriteLine($"Lower Student: {lower?.Name} - GPA: {lower?.GPA}");
+    Console.WriteLine(GetAcademicStanding(3.9m));
+    Console.WriteLine(GetAcademicStanding(3.6m));
+    
