@@ -273,6 +273,96 @@
 
 
 // LINQ(Lists, Arrays, Databases, XML, APIs, Entity Framework Core) //
+// List<Student> students = [
+//     new ()
+//     {
+//         Id = "STU-001",
+//         Name = "Abeba",
+//         Age = 20,
+//         GPA = 3.8m,
+//         Email = "abeba@example.com"
+//     },
+//     new ()
+//     {
+//         Id = "STU-002",
+//         Name = "John",
+//         Age = 22,
+//         GPA = 3.5m,
+//         Email = "john@example.com"
+//     },
+//     new ()
+//     {
+//         Id = "STU-003",
+//         Name = "Helen",
+//         Age = 21,
+//         GPA = 4.0m,
+//         Email = "helen@example.com"
+//     }
+// ];
+
+// var honors = students.Where(s => s.GPA > 3.5m);
+ 
+// foreach (var student in honors)
+// {
+//     Console.WriteLine($"{student.Name} - GPA: {student.GPA}");
+// };
+
+
+// // sorting 
+// var ranked = students.OrderByDescending(s => s.GPA);
+// Console.WriteLine("/// sorting /////");
+
+// foreach (var student in ranked)
+// {
+//     Console.WriteLine($"{student.Name} - GPA: {student.GPA}");
+// };
+
+
+// var leaderboard =
+//     students.Select(s =>
+//         new
+//         {
+//             s.Name,
+//             s.GPA
+//         });
+
+// foreach (var entry in leaderboard)
+// {
+//     Console.WriteLine($"{entry.Name}: {entry.GPA}");
+// }
+
+
+
+///// Projection(Transform data into another shape)(don't always need FULL object Only select needed fields.) //////
+// syntax - collection.Select(item => transformation) //
+
+// System.Console.WriteLine("//////// Get only student names /////////");
+// var names = students.Select(s => s.Name);
+
+// foreach (var name in names)
+// {
+//     Console.WriteLine(name);
+// }
+
+// System.Console.WriteLine("//////// Projection into Anonymous Object /////////");
+// var leaderboard2 =
+//    students.Select(s => 
+//       new
+//       {
+//           s.Name,
+//           s.GPA                                                                                                
+//       });
+      
+// foreach (var entry in leaderboard2)
+// {
+//    Console.WriteLine($"{entry.Name}: {entry.GPA}");
+// };
+
+
+
+
+
+////////////// Aggregation(answers questions about data) /////////////////////
 List<Student> students = [
     new ()
     {
@@ -300,63 +390,22 @@ List<Student> students = [
     }
 ];
 
-var honors = students.Where(s => s.GPA > 3.5m);
- 
-foreach (var student in honors)
-{
-    Console.WriteLine($"{student.Name} - GPA: {student.GPA}");
-};
+System.Console.WriteLine("//////// Average /////////");
+decimal average = students.Average(s => s.GPA);
+Console.WriteLine(average);
 
+System.Console.WriteLine("//////// Count /////////");
+int grate = students.Count(s => s.GPA > 3.5m);
+Console.WriteLine(grate);
 
-// sorting 
-var ranked = students.OrderByDescending(s => s.GPA);
-Console.WriteLine("/// sorting /////");
+System.Console.WriteLine("//////// Any /////////");
+bool hasProbation = students.Any(s => s.GPA < 3.8m);
+System.Console.WriteLine(hasProbation);
 
-foreach (var student in ranked)
-{
-    Console.WriteLine($"{student.Name} - GPA: {student.GPA}");
-};
+System.Console.WriteLine("//////// MaxBy(Highest GPA) /////////");
+Student? top = students.MaxBy(s => s.GPA);
+System.Console.WriteLine($"Top Student: {top?.Name} - GPA: {top?.GPA}");
 
-
-var leaderboard =
-    students.Select(s =>
-        new
-        {
-            s.Name,
-            s.GPA
-        });
-
-foreach (var entry in leaderboard)
-{
-    Console.WriteLine($"{entry.Name}: {entry.GPA}");
-}
-
-
-
-///// Projection(Transform data into another shape)(don't always need FULL object Only select needed fields.) //////
-// syntax - collection.Select(item => transformation) //
-
-System.Console.WriteLine("//////// Get only student names /////////");
-var names = students.Select(s => s.Name);
-
-foreach (var name in names)
-{
-    Console.WriteLine(name);
-}
-
-System.Console.WriteLine("//////// Projection into Anonymous Object /////////");
-var leaderboard2 =
-   students.Select(s => 
-      new
-      {
-          s.Name,
-          s.GPA                                                                                                
-      });
-      
-foreach (var entry in leaderboard2)
-{
-   Console.WriteLine($"{entry.Name}: {entry.GPA}");
-};
-
-
-      
+System.Console.WriteLine("//////// MinBy(Lowest GPA) /////////");
+Student? lower = students.MinBy(s => s.GPA);
+System.Console.WriteLine($"Lower Student: {lower?.Name} - GPA: {lower?.GPA}");
